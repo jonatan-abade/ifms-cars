@@ -2,7 +2,12 @@
 @section('title', 'Home')
 @section('principal')
 
-<div class="grid grid-cols-2 flex items-center container">
-    veja todos os carros
-</div>
+    <div class="flex justify-between container">
+        <h1 class="">Carros</h1>
+        @if (Auth::check())
+            <a href="carro/create" class="btn">Adicionar</a>
+        @endif
+    </div>
+
+
 @endsection
