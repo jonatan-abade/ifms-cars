@@ -7,9 +7,10 @@
      <!-- Compiled and minified CSS -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
   </head>
 
-  <body  class="h-screen bg-gray-200">
+  <body  class="h-screen bg-gray-200 relative">
     <nav class="bg-gray-700">
             <div class="nav-wrapper container ">
             <a href="#!" class="brand-logo">
@@ -44,20 +45,21 @@
         <li><a href="collapsible.html">Motos</a></li>
         <li><a href="mobile.html">Login</a></li>
       </ul>
-   
-    <div class="pt-5">
-      @if (session('sucesso'))
-        <div id="alert-message" class="p-3 bg-green-500 text-white mb-3" role="alert">
-            <div class="container">
-              {{ session('sucesso') }}
-            </div>
+
+    @if (session('sucesso'))
+      <div id="alert-message" class="p-3 bg-green-500 text-white mb-3" role="alert">
+        <div class="container">
+          {{ session('sucesso') }}
         </div>
-      @endif
+      </div>
+    @endif
+    
+    <div class="pt-5 h-full">
         @yield('principal')
     </div>
     
 
-    <footer class="mt-5 bg-current w-full">
+    <footer class="mt-5 bg-current absolute w-full">
        <div class="container text-center text-white	py-5">
             @php echo Date('Y') @endphp &copy; Alguns direitos reservados
        </div>
@@ -65,10 +67,16 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
     <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>           
 
-    <script> M.AutoInit();</script>
+    <script>
+      M.AutoInit();
+      $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+      });
+    </script>
+    
   </body>
 </html>
    

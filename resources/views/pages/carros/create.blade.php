@@ -3,7 +3,8 @@
 @section('principal')
 
     <div class="row">
-        <form class="col s8 offset-s2 bg-white shadow rounded-lg p5" action="/carro" method="POST">
+        <form class="col s8 offset-s2 bg-white shadow rounded-lg p5" action="/carro" method="POST"
+        enctype= multipart/form-data>
             @csrf
             <h1 class="py-3 m-0 text-4xl">Formulario de cadastrado</h1>
             <hr>

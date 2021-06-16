@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Home')
 @section('principal')
-
     <div class="row">
         <form class="col s8 offset-s2 bg-white shadow rounded-lg p5" method="POST" action="/categoria">
             @csrf
