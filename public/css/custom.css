@@ -1,0 +1,18 @@
+a.carousel-item {
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+ul.indicators {
+    background-color: #6b7280;
+}
+
+.carousel .indicators .indicator-item.active {
+    background-color: #ef4444;
+}
+.linkactive {
+    color: #ef4444;
+    text-decoration: underline;
+    font-weight: bolder;
+}

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CarroRequest;
-use App\Models\Carro;
 use App\Models\Categoria;
+use App\Models\Moto;
 use Illuminate\Http\Request;
 
-class CarroController extends Controller
+class MotoController extends Controller
 {
     public function index()
     {
-        $carros = Carro::all();
+        $motos = Moto::all();
 
-        return view('pages.carros.index', [
-            'carros' => $carros,
+        return view('pages.motos.index', [
+            'motos' => $motos,
 
         ]);
     }
@@ -23,7 +23,7 @@ class CarroController extends Controller
     {
         $categorias = Categoria::all();
 
-        return view('pages.carros.create', [
+        return view('pages.motos.create', [
             'categorias' => $categorias,
         ]);
     }
@@ -37,27 +37,25 @@ class CarroController extends Controller
             $request->imagens->move(public_path('imagens'), $fileName);
             $data['imagens'] =  $fileName;
         }
-
         $data['imagens'] =  isset($data['imagens']) ? $data['imagens'] : "";
-        Carro::create($data);
-        return redirect('carros')->with('sucesso', 'Carro cadastrada com sucesso');
+        Moto::create($data);
+        return redirect('motos')->with('sucesso', 'Moto cadastrada com sucesso');
     }
 
     public function edit($id)
     {
         $categorias = Categoria::all();
-        $carro = Carro::findOrFail($id);
+        $moto = Moto::findOrFail($id);
 
-        return view('pages.carros.create', [
-            'carro' => $carro,
+        return view('pages.motos.create', [
+            'moto' => $moto,
             'categorias' => $categorias,
         ]);
     }
 
     public function update(Request $request)
     {
-        $carro = Carro::findOrFail($request->id);
-
+        $moto = Moto::findOrFail($request->id);
         $data = $request->all();
 
         if ($request->hasFile('imagens') && $request->file('imagens')->isValid()) {
@@ -66,22 +64,22 @@ class CarroController extends Controller
             $data['imagens'] =  $fileName;
         }
 
-        $data['imagens'] =  isset($data['imagens']) ? $data['imagens'] :  $carro->imagens;
-        $carro->update($data);
+        $data['imagens'] =  isset($data['imagens']) ? $data['imagens'] :  $moto->imagens;
+        $moto->update($data);
 
-        return redirect('carros')->with('sucesso', 'Carro atualizada com sucesso');
+        return redirect('motos')->with('sucesso', 'Moto atualizada com sucesso');
     }
 
     public function destroy($id)
     {
-        Carro::findOrfail($id)->delete();
-        return redirect('carros')->with('sucesso', 'Carro deletado com sucesso');
+        Moto::findOrfail($id)->delete();
+        return redirect('motos')->with('sucesso', 'Moto deletado com sucesso');
     }
 
     public function show($id)
     {
-        return view('pages.carros.show', [
-            'carro' => Carro::findOrfail($id),
+        return view('pages.motos.show', [
+            'moto' => Moto::findOrfail($id),
         ]);
     }
 }

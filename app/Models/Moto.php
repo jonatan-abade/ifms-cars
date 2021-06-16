@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Moto extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function carros()
+    public function categoria()
     {
-        return $this->hasMany(Carro::class);
-    }
-
-    public function motos()
-    {
-        return $this->hasMany(Moto::class);
+        return $this->belongsTo(Categoria::class);
     }
 }
